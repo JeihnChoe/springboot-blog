@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import shop.mtcoding.blog.dto.JoinDTO;
 import shop.mtcoding.blog.dto.LoginDTO;
+import shop.mtcoding.blog.dto.UserUpdateDTO;
 import shop.mtcoding.blog.model.User;
 
 // BoardController, UserController, UserRepository
@@ -52,5 +53,20 @@ public class UserRepository {
         System.out.println("테스트 :" + 3);
         query.executeUpdate(); // 쿼리를 전송 (DBMS)
         System.out.println("테스트 :" + 4);
+    }
+
+    @Transactional
+    public void update(UserUpdateDTO userUpdateDTO) {
+        
+        Query query = em
+                .createNativeQuery(
+                        "update user_tb set password = :password, email = :email where username = :username");
+        
+        query.setParameter("username", userUpdateDTO.getUsername());
+        query.setParameter("password", userUpdateDTO.getPassword());
+        query.setParameter("email", userUpdateDTO.getEmail());
+        
+        query.executeUpdate(); // 쿼리를 전송 (DBMS)
+        
     }
 }

@@ -1,4 +1,4 @@
-# 스프링부트 블로그 만들기
+# 스프링부트 블로그만들기
 
 ## 기술스택
 
@@ -7,11 +7,11 @@
 - VSCODE
 - MySQL8.0
 
-## 의존성
+## Dependencies
 
 - Lombok
 - DevTools
-- Spring WEB
+- SpringWeb
 - JPA
 - h2
 - MySQL
@@ -22,22 +22,6 @@
 ```sql
 create database blogdb;
 ```
-
-## 2단계 할 일
-
-- JPA Repository
-- 자바스크립트 응답
-- Exception Handler
-- Interceptor
-- Filter
-- 파일 전송(사진)
-- 섬네일
-- Jsoup
-- 썸머노트
-- 이메일전송
-- 게시글 신고
-- 관리자 화면 (게시글 신고관리)
-- 서비스 만들기
 
 ## 댓글 상세보기 한방쿼리
 

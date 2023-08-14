@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import shop.mtcoding.blog.dto.JoinDTO;
 import shop.mtcoding.blog.dto.LoginDTO;
+import shop.mtcoding.blog.dto.UserUpdateDTO;
+import shop.mtcoding.blog.model.Reply;
 import shop.mtcoding.blog.model.SessionUser;
 import shop.mtcoding.blog.model.User;
 import shop.mtcoding.blog.repository.UserRepository;
@@ -121,6 +123,25 @@ public class UserController {
         request.setAttribute("user", user);
 
         return "user/updateForm";
+    }
+
+    @PostMapping("/user/update")
+    public String update(UserUpdateDTO userUpdateDTO) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        
+        // 1. 로그인 안되어있으면, 로그인폼으로 보냄
+        if (sessionUser == null) {
+            return "redirect:/loginForm"; // 401
+        }
+
+        // 2. 로그인되어있으면 권한확인 // 세션이랑 일치하는지
+        // 필요한가???        
+
+
+        // 3. 핵심로직실행
+        userRepository.update(userUpdateDTO);
+        
+        return "redirect:/";
     }
 
     @GetMapping("/logout")
